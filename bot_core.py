@@ -15,11 +15,11 @@ from sklearn.preprocessing import StandardScaler
 load_dotenv()
 
 # Global configuration
-MODE = os.getenv("MODE", "PAPER")
+MODE = os.getenv("MODE", "LIVE")  # Default to LIVE mode
 KALSHI_KEY_ID = os.getenv("KALSHI_KEY_ID")
 KALSHI_PRIVATE_KEY = os.getenv("KALSHI_PRIVATE_KEY")
-BINANCE_API_KEY = os.getenv("BINANCE_API_KEY")
-BINANCE_SECRET_KEY = os.getenv("BINANCE_SECRET_KEY")
+COINBASE_CLIENT_API_KEY = os.getenv("COINBASE_CLIENT_API_KEY")
+COINBASE_SECRET_API_KEY = os.getenv("COINBASE_SECRET_API_KEY")
 
 # API endpoints
 if MODE == "LIVE":
@@ -145,12 +145,12 @@ class KalshiAPI:
         except Exception as e:
             raise Exception(f"Error fetching positions: {e}")
 
-# Binance API wrapper
-class BinanceAPI:
-    def __init__(self, api_key, secret_key):
-        self.exchange = ccxt.binance({
-            'apiKey': api_key,
-            'secret': secret_key,
+# Coinbase API wrapper
+class CoinbaseAPI:
+    def __init__(self, client_api_key, secret_api_key):
+        self.exchange = ccxt.coinbase({
+            'apiKey': client_api_key,
+            'secret': secret_api_key,
             'enableRateLimit': True,
             'options': {
                 'defaultType': 'spot'
@@ -159,7 +159,7 @@ class BinanceAPI:
         
     def get_btc_klines(self, timeframe='1m', limit=100):
         try:
-            ohlcv = self.exchange.fetch_ohlcv('BTC/USDT', timeframe, limit=limit)
+            ohlcv = self.exchange.fetch_ohlcv('BTC/USD', timeframe, limit=limit)
             df = pd.DataFrame(
                 ohlcv, 
                 columns=['timestamp', 'open', 'high', 'low', 'close', 'volume']
@@ -168,7 +168,7 @@ class BinanceAPI:
             return df
             
         except Exception as e:
-            raise Exception(f"Error fetching BTC data from Binance: {e}")
+            raise Exception(f"Error fetching BTC data from Coinbase: {e}")
 
 # Transformer Probability Model
 class TransformerProbabilityModel:
@@ -312,7 +312,7 @@ class SettlementPredictor:
 class KalshiBTC15MinuteTrader:
     def __init__(self):
         self.kalshi_api = KalshiAPI(KALSHI_KEY_ID, KALSHI_PRIVATE_KEY)
-        self.binance_api = BinanceAPI(BINANCE_API_KEY, BINANCE_SECRET_KEY)
+        self.coinbase_api = CoinbaseAPI(COINBASE_CLIENT_API_KEY, COINBASE_SECRET_API_KEY)
         self.probability_model = TransformerProbabilityModel()
         self.reciprocity_logic = ReciprocityLogic()
         self.settlement_predictor = SettlementPredictor()
@@ -328,7 +328,7 @@ class KalshiBTC15MinuteTrader:
         st.info("Initializing trading models...")
         
         # Get historical data for training
-        historical_data = self.binance_api.get_btc_klines('1m', limit=2000)
+        historical_data = self.coinbase_api.get_btc_klines('1m', limit=2000)
         
         # Train probability model
         self.probability_model.train(historical_data)
@@ -378,7 +378,7 @@ class KalshiBTC15MinuteTrader:
             return False
             
         # Get live market data
-        btc_data = self.binance_api.get_btc_klines('1m', limit=60)
+        btc_data = self.coinbase_api.get_btc_klines('1m', limit=60)
         order_book = self.kalshi_api.get_order_book(active_contract['id'])
         
         # Predict probabilities

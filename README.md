@@ -16,7 +16,7 @@ The Kalshi BTC 15-Minute Trader is a sophisticated trading system that combines:
 ### Prerequisites
 
 1. Python 3.8 or higher
-2. API keys from Kalshi and Binance
+2. API keys from Kalshi and Coinbase
 3. Heroku or Streamlit Cloud account
 
 ### 1. GitHub Repository
@@ -38,11 +38,38 @@ The code has already been created and pushed to GitHub:
 6. In the "Secrets" section, click "Add secret" and paste your API keys:
 
 ```env
-MODE=PAPER
-KALSHI_KEY_ID=your_kalshi_key_id_here
-KALSHI_PRIVATE_KEY=your_kalshi_private_key_here
-BINANCE_API_KEY=your_binance_api_key_here
-BINANCE_SECRET_KEY=your_binance_secret_key_here
+MODE=LIVE
+KALSHI_KEY_ID=f0494d09-4663-43e8-bd02-270c7feb6558
+KALSHI_PRIVATE_KEY=-----BEGIN RSA PRIVATE KEY-----
+MIIEowIBAAKCAQEApvsg7Epj8Ucy1i+bL7+bxCXAvVIL0ThQ+4eToNorRbwbx5MG
+BJMQrKaovgd+gT+tfIXGkpNlEcMXO/XAHZq5kTJQYbVHrdkbvpDlZakivZDsJCQ4
+m/BRw2WlNHlSWWDLyd0RAfJxXGMKNn7t7+HG32WOdkC5RgFc6bIlaLQruzaE+uLi
+1pNkFujEkqMjkch4UBUl6lXzXfMrEm0C/cMENZdvXhN5UKvt9xojXIFTeIxXROYF
+s8UrK2nqazjnK853VfvaqhSfBTMnkEGISWds5V015+zGV3Fp/bzW887wmVYFOPoQ
+aR9HGIeGR/R2AVLx0TE80cwt1cHCRf3FYMLxVQIDAQABAoIBAAh3Ic+o49E3HVYr
+erAchC6ZBWDzuGKmesCNuofEl74Ez9m50+vGcul114cuxRSTYF24QH1s2IpifBqP
+lmpJzk+Un+ucL6KaJ6RtHxwcy4SVxMr+RRpuwA5qaEo1Pl4GoL4+pV6WZnXbFYj2
+vWRUa2sm8GaBWIM6jXXRkMDypWbrwzIaGXw4iOZYm4NDuDp/cTyxK2FqHvdFnTz0
+9W8aG9Rbi2a5vX8KoVKtRyrlGXvLJBHtJmgrQ6RRVESZ/ysxqzyP8i+PM/eNXj04
+5s6fPr43L0DQRqfQMiQEg54K/d6wvTVa0spfwhxk3QePlXoMPlAMibq/QriCTFFH
+GY9rTlECgYEAzJBA8nNZpL+g1kpUzGM56/SbaArNwGdjxBFcbtcaWVR1nRH5gB0w
+gkd72+B/Q1JF90ivcLYfAL5Mt7ai4/XcypSG5/+9C2gd1mTbYdhlc8mgRCgM3jA4
+5c1whI1SYu/RgTgGFyJAfl1g9zJayoAT/2X5qiuSIG+33zqSPqvWaz0CgYEA0Pew
+avM7M7wZ07W8/Ei9pYEBnVAaQeFxMqSWzxcDq1glbEL/pMVKT7tInHUrI+vSlCSl
+0S5eywgQjiGNq5b2iMs6aLTKfspTFsv/8MYk9uB962SbLiWJf/kUX3S7gqFDzRQs
+tc3R/rFxuj0KlZzGQhrdcOEYE1lmoWRN1fOdX/kCgYBWNVjZlFksAAIlLPAtroeD
+c/NmVl89fZTi1ToyD/6vtNNYHXIbVrHRxZRiJmsbkPmhbAVbp7TLGGe2aIafMUca
+LJvp+7HMs9UXPCvkQVEICem7r3E01fe0iO6pPfGBdnXBUj3m0+2AE5RAuPzgKDfF
+Q1GDMJeFie9gaQum074qNQKBgQC/rrSxJjRkHGNEhCy67q6nplKoztWHIRkI71k2
+1VGUVuLdEAgYSLEFujG88u2DocokAgnoe7SQYPFurvCZOX0jtef6K/yjmUvmWXKI
+lflKTFq1FjASgHREY2KAvT9TcEIVWDA7BHVgP7ymrV+MJabm9GW0KYZAGX2/BZcw
+bqspYQKBgAfIWytUirC6lrCthNiW6udZkQWWhDpGT26M0Ee0z4W5k2ltUiaC4OYM
+mEXPI/e5J+Yt9uZD2RD1VOHZ+gWw52ZispytWxcDda0GfnFGgHXl4b5dJQD4o1eJ
+asc3ftk7J/yqCRLDCBRLIqgdyVG+Nr6m3s7N4p0BC3aBGmCkP1Fm
+-----END RSA PRIVATE KEY-----
+COINBASE_CLIENT_API_KEY=fEOcjQ6qBm073cPoyKcl4i8KRKjIzYuI
+COINBASE_SECRET_API_KEY=c6f3d279-20c1-4227-9253-763b84895b26
+BRAVE_SEARCH_API_KEY=BSATJWSJ8Sm9eT_H0UgT_fDjiikmgCI
 ```
 
 7. Click "Deploy"
@@ -55,11 +82,38 @@ BINANCE_SECRET_KEY=your_binance_secret_key_here
 4. Configure environment variables:
 
 ```bash
-heroku config:set MODE=PAPER
-heroku config:set KALSHI_KEY_ID=your_kalshi_key_id_here
-heroku config:set KALSHI_PRIVATE_KEY=your_kalshi_private_key_here
-heroku config:set BINANCE_API_KEY=your_binance_api_key_here
-heroku config:set BINANCE_SECRET_KEY=your_binance_secret_key_here
+heroku config:set MODE=LIVE
+heroku config:set KALSHI_KEY_ID=f0494d09-4663-43e8-bd02-270c7feb6558
+heroku config:set KALSHI_PRIVATE_KEY="-----BEGIN RSA PRIVATE KEY-----
+MIIEowIBAAKCAQEApvsg7Epj8Ucy1i+bL7+bxCXAvVIL0ThQ+4eToNorRbwbx5MG
+BJMQrKaovgd+gT+tfIXGkpNlEcMXO/XAHZq5kTJQYbVHrdkbvpDlZakivZDsJCQ4
+m/BRw2WlNHlSWWDLyd0RAfJxXGMKNn7t7+HG32WOdkC5RgFc6bIlaLQruzaE+uLi
+1pNkFujEkqMjkch4UBUl6lXzXfMrEm0C/cMENZdvXhN5UKvt9xojXIFTeIxXROYF
+s8UrK2nqazjnK853VfvaqhSfBTMnkEGISWds5V015+zGV3Fp/bzW887wmVYFOPoQ
+aR9HGIeGR/R2AVLx0TE80cwt1cHCRf3FYMLxVQIDAQABAoIBAAh3Ic+o49E3HVYr
+erAchC6ZBWDzuGKmesCNuofEl74Ez9m50+vGcul114cuxRSTYF24QH1s2IpifBqP
+lmpJzk+Un+ucL6KaJ6RtHxwcy4SVxMr+RRpuwA5qaEo1Pl4GoL4+pV6WZnXbFYj2
+vWRUa2sm8GaBWIM6jXXRkMDypWbrwzIaGXw4iOZYm4NDuDp/cTyxK2FqHvdFnTz0
+9W8aG9Rbi2a5vX8KoVKtRyrlGXvLJBHtJmgrQ6RRVESZ/ysxqzyP8i+PM/eNXj04
+5s6fPr43L0DQRqfQMiQEg54K/d6wvTVa0spfwhxk3QePlXoMPlAMibq/QriCTFFH
+GY9rTlECgYEAzJBA8nNZpL+g1kpUzGM56/SbaArNwGdjxBFcbtcaWVR1nRH5gB0w
+gkd72+B/Q1JF90ivcLYfAL5Mt7ai4/XcypSG5/+9C2gd1mTbYdhlc8mgRCgM3jA4
+5c1whI1SYu/RgTgGFyJAfl1g9zJayoAT/2X5qiuSIG+33zqSPqvWaz0CgYEA0Pew
+avM7M7wZ07W8/Ei9pYEBnVAaQeFxMqSWzxcDq1glbEL/pMVKT7tInHUrI+vSlCSl
+0S5eywgQjiGNq5b2iMs6aLTKfspTFsv/8MYk9uB962SbLiWJf/kUX3S7gqFDzRQs
+tc3R/rFxuj0KlZzGQhrdcOEYE1lmoWRN1fOdX/kCgYBWNVjZlFksAAIlLPAtroeD
+c/NmVl89fZTi1ToyD/6vtNNYHXIbVrHRxZRiJmsbkPmhbAVbp7TLGGe2aIafMUca
+LJvp+7HMs9UXPCvkQVEICem7r3E01fe0iO6pPfGBdnXBUj3m0+2AE5RAuPzgKDfF
+Q1GDMJeFie9gaQum074qNQKBgQC/rrSxJjRkHGNEhCy67q6nplKoztWHIRkI71k2
+1VGUVuLdEAgYSLEFujG88u2DocokAgnoe7SQYPFurvCZOX0jtef6K/yjmUvmWXKI
+lflKTFq1FjASgHREY2KAvT9TcEIVWDA7BHVgP7ymrV+MJabm9GW0KYZAGX2/BZcw
+bqspYQKBgAfIWytUirC6lrCthNiW6udZkQWWhDpGT26M0Ee0z4W5k2ltUiaC4OYM
+mEXPI/e5J+Yt9uZD2RD1VOHZ+gWw52ZispytWxcDda0GfnFGgHXl4b5dJQD4o1eJ
+asc3ftk7J/yqCRLDCBRLIqgdyVG+Nr6m3s7N4p0BC3aBGmCkP1Fm
+-----END RSA PRIVATE KEY-----"
+heroku config:set COINBASE_CLIENT_API_KEY=fEOcjQ6qBm073cPoyKcl4i8KRKjIzYuI
+heroku config:set COINBASE_SECRET_API_KEY=c6f3d279-20c1-4227-9253-763b84895b26
+heroku config:set BRAVE_SEARCH_API_KEY=BSATJWSJ8Sm9eT_H0UgT_fDjiikmgCI
 ```
 
 5. Deploy the code: `git push heroku main`
@@ -68,11 +122,12 @@ heroku config:set BINANCE_SECRET_KEY=your_binance_secret_key_here
 
 | Variable | Description |
 |----------|-------------|
-| MODE | Trading mode: "PAPER" or "LIVE" |
-| KALSHI_KEY_ID | Your Kalshi API key ID |
-| KALSHI_PRIVATE_KEY | Your Kalshi private key |
-| BINANCE_API_KEY | Your Binance API key |
-| BINANCE_SECRET_KEY | Your Binance secret key |
+| MODE | Trading mode: "PAPER" or "LIVE" (default: LIVE) |
+| KALSHI_KEY_ID | Your Kalshi API key ID (provided) |
+| KALSHI_PRIVATE_KEY | Your Kalshi private key (provided) |
+| COINBASE_CLIENT_API_KEY | Your Coinbase API key (provided) |
+| COINBASE_SECRET_API_KEY | Your Coinbase secret API key (provided) |
+| BRAVE_SEARCH_API_KEY | Brave Search API key (provided) |
 
 ## Usage
 
@@ -132,7 +187,7 @@ The system implements two primary trading strategies:
 
 ```
 ┌──────────────────────┐     ┌──────────────────────┐     ┌──────────────────────┐
-│  Binance API (OHLCV) │────▶│  Feature Extraction  │────▶│  Probability Model   │
+│ Coinbase API (OHLCV) │────▶│  Feature Extraction  │────▶│  Probability Model   │
 └──────────────────────┘     └──────────────────────┘     └──────────────────────┘
            ▲                                                           ▲
            │                                                           │
