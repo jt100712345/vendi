@@ -1,0 +1,16 @@
+{
+  "name": "kalshi-btc-15min-trader",
+  "version": "1.0.0",
+  "description": "Kalshi BTC 15-Minute Trader - High-frequency Bitcoin futures trading system with real-time probability prediction and settlement tracking",
+  "author": "Queen Quanta",
+  "license": "MIT",
+  "keywords": ["trading", "kalshi", "bitcoin", "futures", "quantitative"],
+  "files": [
+    "dashboard.py",
+    "bot_core.py",
+    "requirements.txt",
+    "Procfile",
+    "README.md",
+    ".env.example"
+  ]
+}
