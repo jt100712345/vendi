@@ -21,7 +21,10 @@ The Kalshi BTC 15-Minute Trader is a sophisticated trading system that combines:
 
 ### 1. GitHub Repository
 
-Create a new repository on GitHub and add all the project files.
+The code has already been created and pushed to GitHub:
+
+**Repository URL**: https://github.com/papabrosio/kalshi-btc-15min-trader
+**Branch**: main
 
 ### 2. Streamlit Cloud Deployment (Recommended)
 
@@ -29,7 +32,9 @@ Create a new repository on GitHub and add all the project files.
 2. Sign in with your GitHub account
 3. Click "New app"
 4. Select your repository from the list
-5. Set the "Main file path" to `dashboard.py`
+5. Set the "Main file path" to either:
+   - `dashboard.py` (standard version)
+   - `advanced_dashboard.py` (performance-optimized version)
 6. In the "Secrets" section, click "Add secret" and paste your API keys:
 
 ```env
@@ -73,12 +78,40 @@ heroku config:set BINANCE_SECRET_KEY=your_binance_secret_key_here
 
 ### Dashboard Features
 
-1. **Probability Gauge**: Real-time $P(\text{Up})$ vs $P(\text{Down})$ probabilities from the transformer model
-2. **Live Order Book**: Heatmap visualization of current order book with reciprocity logic
-3. **Performance Metrics**: Live P&L, win rate, drawdown, and contract statistics
-4. **Settlement Watch**: Countdown to expiration and BRTI average tracking
-5. **Recent Trades**: Timeline of executed trades with details
-6. **System Health**: API and model status indicators
+The Kalshi BTC 15-Minute Trader includes two dashboard versions:
+
+### 1. Standard Dashboard (dashboard.py)
+- **Probability Gauge**: Real-time $P(\text{Up})$ vs $P(\text{Down})$ probabilities from the transformer model
+- **Live Order Book**: Heatmap visualization of current order book with reciprocity logic
+- **Performance Metrics**: Live P&L, win rate, drawdown, and contract statistics
+- **Settlement Watch**: Countdown to expiration and BRTI average tracking
+- **Recent Trades**: Timeline of executed trades with details
+- **System Health**: API and model status indicators
+
+### 2. Advanced Dashboard (advanced_dashboard.py) - NEW!
+**Features performance optimizations and modern UI enhancements:**
+
+#### Performance Improvements:
+- **st.fragment + st.session_state**: Dynamic updates without full page reload
+- **Session State Management**: Persistent data across refresh cycles
+- **Smart Refresh Controls**: Configurable auto-refresh with interval selection
+- **Minimized Recomputation**: Only updates changed components
+- **Performance Monitoring**: Real-time metrics on session uptime and refresh rate
+
+#### Enhanced UI Features:
+- **Modern Styling**: Glassmorphism effects with hover animations
+- **Interactive Controls**: Sidebar for auto-refresh settings
+- **Real-time Visual Feedback**: Smooth metric transitions
+- **Performance Gauge**: Animated indicator with gradient effects
+- **Data Visualization**: Enhanced charts with improved color schemes
+- **Responsive Layout**: Optimized for different screen sizes
+
+#### Session State Features:
+- **Persistent Refresh Count**: Track how many times data has been updated
+- **Auto-refresh Control**: Enable/disable automatic updates
+- **Interval Selection**: Choose refresh frequency (1-30 seconds)
+- **Simulated Data Updates**: Demonstrates live updates without API calls
+
 
 ### Trading Strategy
 
